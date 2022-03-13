@@ -7,7 +7,9 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({ icon, theme, changeTheme }) {
+    console.log('theme', theme)
+    console.log('changeTheme', changeTheme)
     return (
         <Box id='nav-bar' sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -22,9 +24,17 @@ export default function ButtonAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        News
+                        Brian Mwendwa
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="theme-toggle"
+                        onClick={() => changeTheme({ type: theme.palette.mode === 'dark' ? 'light' : 'dark' })}
+                    >
+                        {icon}
+                    </IconButton>
                 </Toolbar>
             </AppBar>
         </Box>

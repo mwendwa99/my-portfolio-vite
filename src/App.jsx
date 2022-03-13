@@ -1,5 +1,7 @@
 import { useReducer } from 'react';
 import './App.css';
+// mui
+import { LightModeTwoTone, DarkModeTwoTone } from '@mui/icons-material';
 // theme
 import { darkMode, lightMode } from './Theme';
 import { ThemeProvider } from '@mui/material/styles';
@@ -8,21 +10,26 @@ import Navbar from './components/NavBar'
 // sections
 import Landing from './sections/Landing';
 
-const initialValue = { theme: darkMode };
+const initialValue = {
+  theme: darkMode,
+  icon: <DarkModeTwoTone />
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'light':
       return {
         ...state,
-        theme: lightMode
+        theme: lightMode,
+        icon: <LightModeTwoTone />
       }
       break;
 
     case 'dark':
       return {
         ...state,
-        theme: darkMode
+        theme: darkMode,
+        icon: <DarkModeTwoTone />
       }
       break;
 
@@ -36,7 +43,7 @@ function App() {
 
   return (
     <ThemeProvider theme={state.theme}>
-      <Navbar />
+      <Navbar icon={state.icon} theme={state.theme} changeTheme={dispatch} />
       <Landing />
     </ThemeProvider>
   )
