@@ -5,6 +5,7 @@ import { LightModeTwoTone, DarkModeTwoTone } from '@mui/icons-material';
 // theme
 import { darkMode, lightMode } from './Theme';
 import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 // components
 import Navbar from './components/NavBar'
 // sections
@@ -43,6 +44,7 @@ function App() {
 
   return (
     <ThemeProvider theme={state.theme}>
+      <CssBaseline />
       <Navbar icon={state.icon} theme={state.theme} changeTheme={dispatch} />
       <Landing />
     </ThemeProvider>

@@ -8,8 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function ButtonAppBar({ icon, theme, changeTheme }) {
-    console.log('theme', theme)
-    console.log('changeTheme', changeTheme)
+
     return (
         <Box id='nav-bar' sx={{ flexGrow: 1 }}>
             <AppBar position="static">
