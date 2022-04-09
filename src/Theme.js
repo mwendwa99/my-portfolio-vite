@@ -1,40 +1,59 @@
 import { createTheme } from "@mui/material/styles";
-import { teal, blue, indigo, grey, red, blueGrey } from "@mui/material/colors";
+import { teal, yellow, blue, cyan } from "@mui/material/colors";
 
 const getDesignTokens = (mode) => ({
+  typography: {
+    fontFamily: "Courier Prime, monospace",
+  },
   palette: {
     mode,
     ...(mode === "light"
       ? {
           // palette values for light mode
           primary: {
-            main: teal[300],
+            main: teal[200],
             contrastText: teal[900],
           },
-          divider: teal[700],
-          text: {
-            primary: teal[900],
-            secondary: teal[800],
+          secondary:{
+            main: teal[200],
+            contrastText: teal[900],
           },
           background: {
-            default: teal[200],
+            default: teal[100],
             paper: teal[200],
+          },
+          button: {
+            main: teal[200],
+            contrastText: teal[900],
+          },
+          divider: teal[900],
+          text: {
+            primary: teal[900],
+            secondary: teal[500],
           },
         }
       : {
           // palette values for dark mode
           primary: {
-            main: indigo[900],
-            contrastText: indigo[100],
+            main: teal[900],
+            contrastText: teal[100],
           },
-          divider: indigo[200],
+          secondary:{
+            main: teal[900],
+            contrastText: teal[100],
+          },
           background: {
-            default: indigo[900],
-            paper: indigo[900],
+            default: teal[800],
+            paper: teal[900],
           },
+          button: {
+            main: teal[800],
+            contrastText: yellow[500],
+          },
+          divider: teal[200],
           text: {
-            primary: indigo[50],
-            secondary: indigo[100],
+            primary: yellow[500],
+            secondary: yellow[400],
           },
         }),
   },

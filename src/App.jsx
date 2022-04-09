@@ -12,7 +12,7 @@ import Navbar from './components/NavBar'
 import Landing from './sections/Landing';
 
 const initialValue = {
-  theme: darkMode,
+  theme: lightMode,
   icon: <DarkModeTwoTone />
 };
 
