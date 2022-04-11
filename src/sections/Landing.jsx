@@ -1,37 +1,15 @@
-import React, {useState} from 'react';
-import { Box, Container, Grid, Typography, Fab, Divider } from "@mui/material";
+import React from "react";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { DocumentScannerTwoTone } from "@mui/icons-material";
 import Lottie from "lottie-react";
-// import { Document, Page } from "react-pdf";
-import { Document, Page } from 'react-pdf/dist/esm/entry.parcel';
-// import { Document, Page } from "react-pdf/dist/esm/entry.webpack5";
-import { pdfjs } from 'react-pdf'
-import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry'
+// components
+import Modal from "../components/Modal";
 
 // assets
 import codework from "../assets/lottie/codework.json";
 import resume from "../assets/documents/resume.pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker
-const options = {
-  cMapUrl: 'cmaps/',
-  cMapPacked: true,
-  standardFontDataUrl: 'standard_fonts/',
-  workerSrc: 'pdfjs-dist/build/pdf.worker.js',
-};
-
 export default function Landing() {
-  const [file, setFile] = useState(resume);
-  const [numPages, setNumPages] = useState(null);
-
-  function onFileChange(event) {
-    setFile(event.target.files[0]);
-  }
-
-  function onDocumentLoadSuccess({ numPages: nextNumPages }) {
-    setNumPages(nextNumPages);
-  }
-
   return (
     <Container maxWidth="md">
       <Box my={4} py={2}>
@@ -56,7 +34,7 @@ export default function Landing() {
               alignItems: "center",
               flexDirection: "column",
               justifyContent: "center",
-              textAlign:'center'
+              textAlign: "center",
             }}
           >
             <Typography
@@ -89,29 +67,16 @@ export default function Landing() {
               real-world challenges with code. When he is not online, he loves
               and appreciates works of art and beautiful things.
             </Typography>
-            <Fab
-              variant="extended"
-              color="secondary"
-              size="large"
-              sx={{ m: 2, p: 2 }}
-            >
-              <DocumentScannerTwoTone fontSize="medium" sx={{ mr: 1 }} />
-              View Resume
-            </Fab>
-            <div>
-            <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
-            {Array.from(new Array(numPages), (el, index) => (
-              <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-            ))}
-          </Document>
-      <p>
-        Page {pageNumber} of {numPages}
-      </p>
-    </div>
+            <Modal
+              title="View Resume"
+              data={resume}
+              icon={
+                <DocumentScannerTwoTone fontSize="medium" sx={{ mr: "auto" }} />
+              }
+            />
           </Grid>
         </Grid>
       </Box>
-      <Divider variant="middle" />
     </Container>
   );
 }
