@@ -3,7 +3,7 @@ import "./App.css";
 // mui
 import { LightModeTwoTone, DarkModeTwoTone } from "@mui/icons-material";
 import { Container } from "@mui/material";
-import { LaptopTwoTone } from "@mui/icons-material";
+import { LaptopTwoTone, AccountTreeTwoTone } from "@mui/icons-material";
 // theme
 import { darkMode, lightMode } from "./Theme";
 import { ThemeProvider } from "@mui/material/styles";
@@ -14,6 +14,7 @@ import Divider from "./components/Divider";
 // sections
 import Landing from "./sections/Landing";
 import WhatIDo from "./sections/WhatIDo";
+import Projects from "./sections/Projects";
 
 const initialValue = {
   theme: lightMode,
@@ -54,6 +55,11 @@ function App() {
         <Landing />
         <Divider label="What I Do" icon={<LaptopTwoTone fontSize="medium" />} />
         <WhatIDo />
+        <Divider
+          label="Projects"
+          icon={<AccountTreeTwoTone fontSize="medium" />}
+        />
+        <Projects />
       </Container>
     </ThemeProvider>
   );
