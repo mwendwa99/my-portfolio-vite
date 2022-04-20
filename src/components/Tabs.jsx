@@ -41,9 +41,13 @@ function a11yProps(index) {
   };
 }
 
-export default function FullWidthTabs() {
+export default function FullWidthTabs({ data }) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    setValue(0);
+  }, [data]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,9 +68,9 @@ export default function FullWidthTabs() {
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          {data.map((item, index) => {
+            return <Tab key={index} label={item.title} {...a11yProps(index)} />;
+          })}
         </Tabs>
       </AppBar>
       <SwipeableViews
@@ -74,15 +78,16 @@ export default function FullWidthTabs() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          Item One
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-          Item Three
-        </TabPanel>
+        {data.map((item, index) => (
+          <TabPanel
+            key={index}
+            value={value}
+            index={index}
+            dir={theme.direction}
+          >
+            {item.description}
+          </TabPanel>
+        ))}
       </SwipeableViews>
     </Box>
   );

@@ -5,7 +5,6 @@ import Tabs from "../components/Tabs";
 import data from "../api/projects";
 
 export default function () {
-  console.log("projects", data.projects);
   return (
     <Container maxWidth="md">
       <Grid container spacing={3}>
@@ -20,7 +19,7 @@ export default function () {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Tabs data={data.projects} />
+          <Tabs data={data} />
         </Grid>
       </Grid>
     </Container>
