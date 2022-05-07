@@ -1,15 +1,75 @@
-import React from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Container,
+  Grid,
+  Skeleton,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
 import { DocumentScannerTwoTone } from "@mui/icons-material";
 import Lottie from "lottie-react";
+import axios from "axios";
+import "react-loading-skeleton/dist/skeleton.css";
 // components
 import Modal from "../components/Modal";
 
 // assets
 import codework from "../assets/lottie/codework.json";
-import resume from "../assets/documents/resume.pdf";
+
+const token = import.meta.env.VITE_APP_airtableToken;
+
+const config = {
+  headers: { Authorization: `Bearer ${token}` },
+};
+
+// table object literal
+const sections = {
+  writeupSection1: "recvVT41fzmT4Gmxc",
+};
 
 export default function Landing() {
+  const [data, setData] = useState({
+    image: <Skeleton variant="circular" />,
+    title: (
+      <Skeleton
+        variant="text"
+        width={300}
+        animation="pulse"
+        sx={{ m: 0, p: 0 }}
+      />
+    ),
+    subtitle: (
+      <Skeleton
+        variant="text"
+        width={300}
+        animation="pulse"
+        sx={{ m: 0, p: 0 }}
+      />
+    ),
+    description: (
+      <Skeleton
+        variant="text"
+        width={300}
+        animation="pulse"
+        sx={{ m: 0, p: 0 }}
+        height={200}
+      />
+    ),
+    asset: [],
+  });
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.airtable.com/v0/appJjjwtxcQuzoQcH/images/${sections["writeupSection1"]}`,
+        config
+      )
+      .then((res) => setData(res.data.fields))
+      .catch((errors) => {
+        console.log(errors);
+      });
+  }, []);
+
   return (
     <Container maxWidth="md">
       <Box my={4} py={2}>
@@ -44,7 +104,7 @@ export default function Landing() {
               sx={{ fontWeight: 700 }}
               component="h1"
             >
-              Brian Mwendwa
+              {data.title}
             </Typography>
             <Typography
               variant="subtitle1"
@@ -53,7 +113,7 @@ export default function Landing() {
               sx={{ fontWeight: 700 }}
               component="p"
             >
-              ( Artist / Developer / Designer )
+              {data.subtitle}
             </Typography>
             <Typography
               variant="body1"
@@ -61,15 +121,10 @@ export default function Landing() {
               color="text.primary"
               align="center"
             >
-              Brian is a software developer and freelancer located in Nairobi
-              with a passion for creating digital services. He excels at all
-              aspects of product launch, from planning and design to solving
-              real-world challenges with code. When he is not online, he loves
-              and appreciates works of art and beautiful things.
+              {data.description}
             </Typography>
             <Modal
               title="View Resume"
-              data={resume}
               icon={
                 <DocumentScannerTwoTone fontSize="medium" sx={{ mr: "auto" }} />
               }

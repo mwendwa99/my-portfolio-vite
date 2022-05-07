@@ -1,14 +1,25 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Fab from "@mui/material/Fab";
-import { Grid } from "@mui/material";
+import { CircularProgress, Grid, Skeleton } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { DocumentScannerTwoTone } from "@mui/icons-material";
 // assets
 import resume from "../assets/documents/resume.pdf";
+import axios from "axios";
+
+const token = "keytCp2fZCHBon4p5";
+
+const config = {
+  headers: { Authorization: `Bearer ${token}` },
+};
+
+const documentsTable = {
+  resume: "recmTZRJcg1KZEnfE",
+};
 
 const style = {
   position: "absolute",
@@ -24,9 +35,23 @@ const style = {
 };
 
 export default function TransitionsModal({ title, icon }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [data, setData] = useState({
+    title: <Skeleton />,
+    attachments: <CircularProgress />,
+    version: <Skeleton />,
+  });
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.airtable.com/v0/appJjjwtxcQuzoQcH/documents/${documentsTable["resume"]}`,
+        config
+      )
+      .then((res) => setData(res.data));
+  }, []);
 
   return (
     <div>
@@ -56,7 +81,8 @@ export default function TransitionsModal({ title, icon }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <embed src={resume} height="100%" width="100%" />
+            {/* <embed src={resume} height="100%" width="100%" /> */}
+            <embed src={data.attachments} height="100%" width="100%" />
           </Box>
         </Fade>
       </Modal>
