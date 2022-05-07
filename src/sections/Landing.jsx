@@ -7,7 +7,6 @@ import {
   CircularProgress,
   Typography,
 } from "@mui/material";
-import { DocumentScannerTwoTone } from "@mui/icons-material";
 import Lottie from "lottie-react";
 import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -30,7 +29,6 @@ const sections = {
 
 export default function Landing() {
   const [data, setData] = useState({
-    image: <Skeleton variant="circular" />,
     title: (
       <Skeleton
         variant="text"
@@ -123,12 +121,7 @@ export default function Landing() {
             >
               {data.description}
             </Typography>
-            <Modal
-              title="View Resume"
-              icon={
-                <DocumentScannerTwoTone fontSize="medium" sx={{ mr: "auto" }} />
-              }
-            />
+            <Modal />
           </Grid>
         </Grid>
       </Box>
