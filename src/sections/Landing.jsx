@@ -12,6 +12,8 @@ import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
 // components
 import Modal from "../components/Modal";
+// api
+import { Projects } from "../api";
 
 // assets
 import codework from "../assets/lottie/codework.json";
@@ -56,17 +58,24 @@ export default function Landing() {
     ),
     asset: [],
   });
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.airtable.com/v0/appJjjwtxcQuzoQcH/images/${sections["writeupSection1"]}`,
-        config
-      )
-      .then((res) => setData(res.data.fields))
-      .catch((errors) => {
-        console.log(errors);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://api.airtable.com/v0/appJjjwtxcQuzoQcH/images/${sections["writeupSection1"]}`,
+  //       config
+  //     )
+  //     .then((res) => setData(res.data.fields))
+  //     .catch((errors) => {
+  //       console.log(errors);
+  //     });
+  // }, []);
+
+  useEffect(async () => {
+    let res = await Projects.all;
+    res.forEach((item) => {
+      console.log(item.id, "=>", item.data());
+    });
+  });
 
   return (
     <Container maxWidth="md">
