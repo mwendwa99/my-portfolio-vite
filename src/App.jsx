@@ -1,5 +1,7 @@
-import { useReducer } from "react";
+import { useReducer, useEffect, useState } from "react";
 import "./App.css";
+// api
+import { Writeups, Projects as MyProjects } from "./api";
 // mui
 import { LightModeTwoTone, DarkModeTwoTone } from "@mui/icons-material";
 import { Container } from "@mui/material";
@@ -46,13 +48,33 @@ const reducer = (state, action) => {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialValue);
+  const [loading, setLoading] = useState(false);
+  const [writeup, setWriteup] = useState({
+    intro: {},
+    whatIDo: {},
+    contact: {},
+  });
+
+  useEffect(async () => {
+    setLoading(true);
+    let writeup = await Writeups.all;
+    writeup.forEach((item) => {
+      setWriteup((prevState) => {
+        // create object of item.id and item.data()
+        return { ...prevState, [item.id]: item.data() };
+      });
+    });
+    setLoading(false);
+  }, []);
+
+  console.log("writeup", writeup);
 
   return (
     <ThemeProvider theme={state.theme}>
       <CssBaseline />
       <Navbar icon={state.icon} theme={state.theme} changeTheme={dispatch} />
       <Container maxWidth="md">
-        <Landing />
+        <Landing loading={loading} writeups={writeup.intro} />
         <Divider label="What I Do" icon={<LaptopTwoTone fontSize="medium" />} />
         <WhatIDo />
         <Divider

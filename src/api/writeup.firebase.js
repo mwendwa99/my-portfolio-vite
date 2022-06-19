@@ -5,10 +5,9 @@ const db = getFirestore(app);
 
 class Writeup {
   constructor() {
-    this.data = [];
-    this.all = getDocs(collection(db, "writeups"));
     // colleciton
-    this.document = collection("writeups");
+    this.document = collection(db, "writeups");
+    this.all = getDocs(this.document);
   }
 
   async getProject(id) {

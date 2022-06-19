@@ -12,9 +12,6 @@ import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
 // components
 import Modal from "../components/Modal";
-// api
-import { Projects } from "../api";
-
 // assets
 import codework from "../assets/lottie/codework.json";
 
@@ -29,54 +26,7 @@ const sections = {
   writeupSection1: "recvVT41fzmT4Gmxc",
 };
 
-export default function Landing() {
-  const [data, setData] = useState({
-    title: (
-      <Skeleton
-        variant="text"
-        width={300}
-        animation="pulse"
-        sx={{ m: 0, p: 0 }}
-      />
-    ),
-    subtitle: (
-      <Skeleton
-        variant="text"
-        width={300}
-        animation="pulse"
-        sx={{ m: 0, p: 0 }}
-      />
-    ),
-    description: (
-      <Skeleton
-        variant="text"
-        width={300}
-        animation="pulse"
-        sx={{ m: 0, p: 0 }}
-        height={200}
-      />
-    ),
-    asset: [],
-  });
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://api.airtable.com/v0/appJjjwtxcQuzoQcH/images/${sections["writeupSection1"]}`,
-  //       config
-  //     )
-  //     .then((res) => setData(res.data.fields))
-  //     .catch((errors) => {
-  //       console.log(errors);
-  //     });
-  // }, []);
-
-  useEffect(async () => {
-    let res = await Projects.all;
-    res.forEach((item) => {
-      console.log(item.id, "=>", item.data());
-    });
-  });
-
+export default function Landing({ writeups }) {
   return (
     <Container maxWidth="md">
       <Box my={4} py={2}>
@@ -111,7 +61,14 @@ export default function Landing() {
               sx={{ fontWeight: 700 }}
               component="h1"
             >
-              {data.title}
+              {writeups.title || (
+                <Skeleton
+                  variant="text"
+                  width={300}
+                  animation="pulse"
+                  sx={{ m: 0, p: 0 }}
+                />
+              )}
             </Typography>
             <Typography
               variant="subtitle1"
@@ -120,7 +77,14 @@ export default function Landing() {
               sx={{ fontWeight: 700 }}
               component="p"
             >
-              {data.subtitle}
+              {writeups.subtitle || (
+                <Skeleton
+                  variant="text"
+                  width={300}
+                  animation="pulse"
+                  sx={{ m: 0, p: 0 }}
+                />
+              )}
             </Typography>
             <Typography
               variant="body1"
@@ -128,7 +92,15 @@ export default function Landing() {
               color="text.primary"
               align="center"
             >
-              {data.description}
+              {writeups.description || (
+                <Skeleton
+                  variant="text"
+                  width={300}
+                  animation="pulse"
+                  sx={{ m: 0, p: 0 }}
+                  height={200}
+                />
+              )}
             </Typography>
             <Modal />
           </Grid>

@@ -5,14 +5,13 @@ const db = getFirestore(app);
 
 class Project {
   constructor() {
-    this.data = [];
-    this.all = getDocs(collection(db, "projects"));
     // colleciton
-    this.document = collection("projects");
+    this.document = collection(db, "projects");
+    this.all = getDocs(this.document);
   }
 
   async getProject(id) {
-    const doc = await getDoc(this.document.collection("projects").doc(id));
+    const doc = await getDoc(this.document.doc(id));
     return doc;
   }
 
