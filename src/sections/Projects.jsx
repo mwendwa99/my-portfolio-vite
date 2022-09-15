@@ -3,7 +3,7 @@ import { Typography, Container, Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import projectSlice, {
   updateDescription,
-} from "../../redux/slices/projectSlice";
+} from "../../redux/reducers/projectSlice";
 // components
 import Tabs from "../components/Tabs";
 // api

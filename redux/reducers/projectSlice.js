@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   title: "empty",
   description: "empty",
+  image: "none",
 };
 
 export const projectSlice = createSlice({
