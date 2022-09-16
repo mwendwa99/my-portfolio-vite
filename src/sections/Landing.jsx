@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Container, Grid, Skeleton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserDetails } from "../../redux/reducers/userSlice";
+import { getUserDetails } from "../redux/reducers/userSlice";
 import Lottie from "lottie-react";
 import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -24,11 +24,6 @@ const sections = {
 export default function Landing({ writeups }) {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.user.title);
-
-  getUserDetails();
-  useEffect(() => {
-    getUserDetails();
-  }, []);
 
   return (
     <Container maxWidth="md">
