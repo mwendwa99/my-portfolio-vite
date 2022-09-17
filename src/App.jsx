@@ -26,8 +26,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Navbar theme={theme} changeTheme={dispatch} />
-      {/* <Container maxWidth="md">
-        <Landing loading={loading} writeups={writeup.intro} />
+      <Container maxWidth="md">
+        <Landing />
         <Divider label="What I Do" icon={<LaptopTwoTone fontSize="medium" />} />
         <WhatIDo />
         <Divider
@@ -35,7 +35,7 @@ function App() {
           icon={<AccountTreeTwoTone fontSize="medium" />}
         />
         <Projects />
-      </Container> */}
+      </Container>
     </ThemeProvider>
   );
 }

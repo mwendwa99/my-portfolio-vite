@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { userDocument } from "../../methods/firebaseMethods";
+import { userDocument } from "../../utils/firebaseMethods";
 
 const initialState = {
   title: "",

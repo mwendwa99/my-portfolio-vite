@@ -21,7 +21,7 @@ const sections = {
   writeupSection1: "recvVT41fzmT4Gmxc",
 };
 
-export default function Landing({ writeups }) {
+export default function Landing() {
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.user.title);
 
@@ -75,7 +75,7 @@ export default function Landing({ writeups }) {
               sx={{ fontWeight: 700 }}
               component="p"
             >
-              {writeups.subtitle || (
+              {userName || (
                 <Skeleton
                   variant="text"
                   width={300}
@@ -90,7 +90,7 @@ export default function Landing({ writeups }) {
               color="text.primary"
               align="center"
             >
-              {writeups.description || (
+              {userName || (
                 <Skeleton
                   variant="text"
                   width={300}
