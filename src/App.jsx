@@ -20,7 +20,7 @@ import Projects from "./sections/Projects";
 function App() {
   const dispatch = useDispatch();
   const theme = createTheme(useSelector((state) => state.theme.mode));
-  console.log("va", theme);
+  // console.log("va", theme);
 
   return (
     <ThemeProvider theme={theme}>
