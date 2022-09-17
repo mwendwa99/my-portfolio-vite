@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Container, Grid, Skeleton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserDetails } from "../redux/reducers/userSlice";
+import { getUserDetails } from "../redux/slices/userSlice";
 import Lottie from "lottie-react";
 import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";

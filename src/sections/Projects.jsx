@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { Typography, Container, Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import projectSlice, {
-  updateDescription,
-} from "../redux/reducers/projectSlice";
+import projectSlice, { updateDescription } from "../redux/slices/projectSlice";
 // components
 import Tabs from "../components/Tabs";
-// api
-import data from "../api/projects";
 
 export default function () {
   const dispatch = useDispatch();
@@ -40,7 +36,7 @@ export default function () {
           <button onClick={() => dispatch(updateDescription(words))}>
             update description!
           </button>
-          <Tabs data={data} />
+          {/* <Tabs data={data} /> */}
         </Grid>
       </Grid>
     </Container>
