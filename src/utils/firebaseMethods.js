@@ -1,12 +1,13 @@
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import {
+  doc,
+  getDocs,
+  getFirestore,
+  collection,
+  getDoc,
+  onSnapshot,
+} from "firebase/firestore";
 import { app } from "./firebase-config.js";
 
 const db = getFirestore(app);
-const docRef = doc(db, "content", "title");
-export const userDocument = await getDoc(docRef);
-
-if (userDocument.exists()) {
-  console.log(`document exists, ${userDocument.data()}`);
-} else {
-  console.log(`better luck next time`);
-}
+export const content = await getDocs(collection(db, "content"));
+export const about = await getDoc(doc(db, "content", "about"));

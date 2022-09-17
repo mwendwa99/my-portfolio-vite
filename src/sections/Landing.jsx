@@ -1,29 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Box, Container, Grid, Skeleton, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { getUserDetails } from "../redux/slices/userSlice";
+import { getAbout } from "../redux/slices/contentSlice";
 import Lottie from "lottie-react";
-import axios from "axios";
 import "react-loading-skeleton/dist/skeleton.css";
 // components
 import Modal from "../components/Modal";
 // assets
 import codework from "../assets/lottie/codework.json";
 
-const token = import.meta.env.VITE_APP_airtableToken;
-
-const config = {
-  headers: { Authorization: `Bearer ${token}` },
-};
-
-// table object literal
-const sections = {
-  writeupSection1: "recvVT41fzmT4Gmxc",
-};
-
 export default function Landing() {
   const dispatch = useDispatch();
-  const userName = useSelector((state) => state.user.title);
+  const data = useSelector((state) => state.content.data);
+
+  useEffect(() => {
+    dispatch(getAbout());
+  }, []);
 
   return (
     <Container maxWidth="md">
@@ -59,7 +51,7 @@ export default function Landing() {
               sx={{ fontWeight: 700 }}
               component="h1"
             >
-              {userName || (
+              {data.title || (
                 <Skeleton
                   variant="text"
                   width={300}
@@ -75,7 +67,7 @@ export default function Landing() {
               sx={{ fontWeight: 700 }}
               component="p"
             >
-              {userName || (
+              {data.subtitle || (
                 <Skeleton
                   variant="text"
                   width={300}
@@ -90,7 +82,7 @@ export default function Landing() {
               color="text.primary"
               align="center"
             >
-              {userName || (
+              {data.description || (
                 <Skeleton
                   variant="text"
                   width={300}
