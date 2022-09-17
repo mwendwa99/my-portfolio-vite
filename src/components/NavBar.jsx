@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { LightModeTwoTone, DarkModeTwoTone } from "@mui/icons-material";
+import { light, dark } from "../redux/slices/themeSlice";
 
 export default function ButtonAppBar({ theme, changeTheme }) {
   return (
@@ -30,11 +31,11 @@ export default function ButtonAppBar({ theme, changeTheme }) {
             edge="start"
             color="inherit"
             aria-label="theme-toggle"
-            onClick={() =>
-              changeTheme({
-                type: theme.palette.mode === "dark" ? "light" : "dark",
-              })
-            }
+            onClick={() => {
+              theme.palette.mode === "light"
+                ? changeTheme(dark())
+                : changeTheme(light());
+            }}
           >
             {theme.palette.mode === "light" ? (
               <DarkModeTwoTone />

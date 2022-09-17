@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { darkMode, lightMode } from "../../Theme";
+import { createTheme } from "@mui/material/styles";
+import { teal, yellow, blue, cyan } from "@mui/material/colors";
 
 const initialState = {
-  mode: lightMode,
-  //   icon: <DarkModeTwoTone />,
+  mode: {
+    palette: {
+      // palette values for dark mode
+      mode: "light",
+    },
+  },
 };
 
 const themeSlice = createSlice({
@@ -11,10 +16,20 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     light: (state) => {
-      state.mode = lightMode;
+      state.mode = {
+        // palette values for dark mode
+        palette: {
+          mode: "light",
+        },
+      };
     },
     dark: (state) => {
-      state.mode = darkMode;
+      state.mode = {
+        // palette values for dark mode
+        palette: {
+          mode: "dark",
+        },
+      };
     },
   },
 });
