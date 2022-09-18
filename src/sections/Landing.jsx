@@ -11,7 +11,7 @@ import codework from "../assets/lottie/codework.json";
 
 export default function Landing() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.content.data);
+  const about = useSelector((state) => state.content.about);
 
   useEffect(() => {
     dispatch(getAbout());
@@ -51,7 +51,7 @@ export default function Landing() {
               sx={{ fontWeight: 700 }}
               component="h1"
             >
-              {data.title || (
+              {about.title || (
                 <Skeleton
                   variant="text"
                   width={300}
@@ -67,7 +67,7 @@ export default function Landing() {
               sx={{ fontWeight: 700 }}
               component="p"
             >
-              {data.subtitle || (
+              {about.subtitle || (
                 <Skeleton
                   variant="text"
                   width={300}
@@ -82,7 +82,7 @@ export default function Landing() {
               color="text.primary"
               align="center"
             >
-              {data.description || (
+              {about.description || (
                 <Skeleton
                   variant="text"
                   width={300}

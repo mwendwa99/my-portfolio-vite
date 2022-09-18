@@ -1,12 +1,48 @@
-import { Container, Box, Grid, Typography } from "@mui/material";
-import { ReactSVG } from "react-svg";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Container, Box, Grid, Typography, Skeleton } from "@mui/material";
+import { getWhatIDo } from "../redux/slices/contentSlice";
 // components
 import Svg from "../components/Svg";
 // assets
 import deploy from "../assets/svg/deploy.svg";
 import build from "../assets/svg/build.svg";
 import design from "../assets/svg/design.svg";
+
 export default function WhatIDo() {
+  const dispatch = useDispatch();
+  const whatido = useSelector((state) => state.content.whatido);
+
+  console.log("whatido", whatido);
+
+  useEffect(() => {
+    dispatch(getWhatIDo());
+  }, []);
+
+  const renderWhatIdo = (whatido) => {
+    whatido ? (
+      whatido.data.map((item, index) => {
+        <Typography
+          key={index}
+          variant="h6"
+          gutterBottom
+          align="center"
+          sx={{ fontWeight: 700, textAlign: "center" }}
+          component="h1"
+        >
+          {item.title}
+        </Typography>;
+      })
+    ) : (
+      <Skeleton
+        variant="text"
+        width={100}
+        animation="pulse"
+        sx={{ m: 0, p: 0 }}
+      />
+    );
+  };
+
   return (
     <Container maxWidth="md">
       <Box my={4} py={2}>
@@ -20,14 +56,42 @@ export default function WhatIDo() {
           }}
         >
           <Grid item xs={12} sm={4} md={4}>
-            <Typography
+            {renderWhatIdo()}
+            {/* <p>{JSON.stringify(whatido.data)}</p> */}
+            {/* {whatido.data.map((item, index) => {
+              <Typography
+                key={index}
+                variant="h6"
+                gutterBottom
+                align="center"
+                sx={{ fontWeight: 700, textAlign: "center" }}
+                component="h1"
+              >
+                {item.title || (
+                  <Skeleton
+                    variant="text"
+                    width={100}
+                    animation="pulse"
+                    sx={{ m: 0, p: 0 }}
+                  />
+                )}
+              </Typography>;
+            })} */}
+            {/* <Typography
               variant="h6"
               gutterBottom
               align="center"
-              sx={{ fontWeight: 700 }}
+              sx={{ fontWeight: 700, textAlign: "center" }}
               component="h1"
             >
-              Design
+              {whatido.title || (
+                <Skeleton
+                  variant="text"
+                  width={100}
+                  animation="pulse"
+                  sx={{ m: 0, p: 0 }}
+                />
+              )}
             </Typography>
             <img src={design} height={300} width="100%" alt="" />
             <Typography
@@ -38,9 +102,9 @@ export default function WhatIDo() {
             >
               I conceptualize an idea into beautiful ui and great user
               experience.
-            </Typography>
+            </Typography> */}
           </Grid>
-          <Grid item xs={12} sm={4} md={4}>
+          {/* <Grid item xs={12} sm={4} md={4}>
             <Typography
               variant="h6"
               gutterBottom
@@ -81,7 +145,7 @@ export default function WhatIDo() {
               I monitor cloud maintenance, planning, security and usage across
               the company
             </Typography>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </Container>

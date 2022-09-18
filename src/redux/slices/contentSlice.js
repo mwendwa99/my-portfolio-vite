@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { about } from "../../utils/firebaseMethods";
+import { about, whatido } from "../../utils/firebaseMethods";
 
 const initialState = {
-  data: {},
+  about: {},
+  whatido: [],
 };
 
 export const contentSlice = createSlice({
@@ -10,16 +11,22 @@ export const contentSlice = createSlice({
   initialState,
   reducers: {
     getAbout: (state) => {
-      state.data = about.data();
+      state.about = about.data();
     },
+    getWhatIDo: (state) => {
+      state.whatido = whatido.data();
+      console.log("whatido", whatido.data());
+    },
+    getProjects: (state) => {},
     updateAbout: (state) => {},
-    getWhatIDo: (state) => {},
     updateWhatIDo: (state) => {},
+    updateProjects: (state) => {},
     deleteWhatIDo: (state) => {},
+    deleteProject: (state) => {},
   },
 });
 
-export const { getAbout, updateUserDetails, deleteUserDetails } =
+export const { getAbout, getWhatIDo, updateUserDetails, deleteUserDetails } =
   contentSlice.actions;
 
 export default contentSlice.reducer;
