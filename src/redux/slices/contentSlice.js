@@ -3,7 +3,7 @@ import { about, whatido } from "../../utils/firebaseMethods";
 
 const initialState = {
   about: {},
-  whatido: [],
+  whatido: {},
 };
 
 export const contentSlice = createSlice({
@@ -15,7 +15,6 @@ export const contentSlice = createSlice({
     },
     getWhatIDo: (state) => {
       state.whatido = whatido.data();
-      console.log("whatido", whatido.data());
     },
     getProjects: (state) => {},
     updateAbout: (state) => {},
