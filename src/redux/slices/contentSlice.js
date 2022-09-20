@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const contentSlice = createSlice({
-  name: "user",
+  name: "whatido",
   initialState,
   reducers: {
     getAbout: (state) => {
@@ -16,12 +16,9 @@ export const contentSlice = createSlice({
     getWhatIDo: (state) => {
       state.whatido = whatido.data();
     },
-    getProjects: (state) => {},
     updateAbout: (state) => {},
     updateWhatIDo: (state) => {},
-    updateProjects: (state) => {},
     deleteWhatIDo: (state) => {},
-    deleteProject: (state) => {},
   },
 });
 

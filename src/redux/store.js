@@ -5,7 +5,7 @@ import contentReducer from "./slices/contentSlice";
 
 export const store = configureStore({
   reducer: {
-    project: projectReducer,
+    projects: projectReducer,
     content: contentReducer,
     theme: themeSlice,
   },

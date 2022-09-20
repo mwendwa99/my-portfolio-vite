@@ -1,23 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { projects } from "../../utils/firebaseMethods";
 
 const initialState = {
-  title: "empty",
-  description: "empty",
-  image: "none",
+  data: {},
 };
 
 export const projectSlice = createSlice({
-  name: "project",
+  name: "all",
   initialState,
   reducers: {
-    updateTitle: (state, action) => {
-      state.title += action.payload;
-    },
-    updateDescription: (state, action) => {
-      state.description = action.payload;
+    getProjects: (state) => {
+      state.data = projects.forEach((doc) => {
+        // const obj = {{doc.id, doc.data()}}
+        // console.log(state.data.push());
+        // state.data.push(doc.data());
+      });
     },
   },
 });
 
-export const { updateTitle, updateDescription } = projectSlice.actions;
+export const { getProjects } = projectSlice.actions;
 export default projectSlice.reducer;
