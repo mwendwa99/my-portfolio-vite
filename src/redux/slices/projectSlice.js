@@ -11,9 +11,9 @@ export const projectSlice = createSlice({
   reducers: {
     getProjects: (state) => {
       state.data = projects.forEach((doc) => {
-        // const obj = {{doc.id, doc.data()}}
-        // console.log(state.data.push());
-        // state.data.push(doc.data());
+        const obj = {};
+        obj[doc.id] = doc.data();
+        state.data = Object.assign({}, obj);
       });
     },
   },

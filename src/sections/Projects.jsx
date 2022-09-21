@@ -10,10 +10,9 @@ export default function () {
   const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects.all);
 
-  console.log("projo", projects);
-
   useEffect(() => {
     dispatch(getProjects());
+    console.log("projo", projects);
   }, []);
 
   return (
