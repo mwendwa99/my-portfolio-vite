@@ -8,11 +8,10 @@ import Carousel from "../components/Carousel";
 
 export default function () {
   const dispatch = useDispatch();
-  const projects = useSelector((state) => state.projects.all);
+  const projects = useSelector((state) => state.projects.data);
 
   useEffect(() => {
     dispatch(getProjects());
-    console.log("projo", projects);
   }, []);
 
   return (
@@ -20,7 +19,7 @@ export default function () {
       <Grid container spacing={3}>
         <Grid item xs={12}></Grid>
         <Grid item xs={12}>
-          <Carousel />
+          <Carousel projects={Object.values(projects)} />
         </Grid>
       </Grid>
     </Container>

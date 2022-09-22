@@ -6,7 +6,7 @@ import { Container, Box, Grid, Typography, Skeleton } from "@mui/material";
 export default function WhatIDo() {
   const dispatch = useDispatch();
   const whatido = useSelector((state) => state.content.whatido);
-  console.log("watido", whatido);
+
   useEffect(() => {
     dispatch(getWhatIDo());
   }, []);

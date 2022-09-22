@@ -10,11 +10,11 @@ export const projectSlice = createSlice({
   initialState,
   reducers: {
     getProjects: (state) => {
-      state.data = projects.forEach((doc) => {
-        const obj = {};
+      const obj = {};
+      projects.forEach((doc) => {
         obj[doc.id] = doc.data();
-        state.data = Object.assign({}, obj);
       });
+      state.data = obj;
     },
   },
 });
