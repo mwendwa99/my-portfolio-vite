@@ -23,7 +23,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Navbar theme={theme} changeTheme={dispatch} />
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ mt: 10 }}>
         <Landing />
         <Divider label="What I Do" icon={<LaptopTwoTone fontSize="medium" />} />
         <WhatIDo />

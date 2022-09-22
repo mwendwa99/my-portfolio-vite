@@ -12,7 +12,7 @@ import { light, dark } from "../redux/slices/themeSlice";
 export default function ButtonAppBar({ theme, changeTheme }) {
   return (
     <Box id="nav-bar" sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             size="large"

@@ -62,12 +62,19 @@ function Item(props) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
-              height: 230,
+              height: 200,
             }}
           >
             <Typography variant="h6">{props.item.title}</Typography>
             <Typography variant="body1">{props.item.description}</Typography>
           </Box>
+          <Typography
+            variant="subtitle"
+            sx={{ fontWeight: "bold", fontSize: 11 }}
+          >
+            Stack: {props.item.stack}
+          </Typography>
+          <br />
           <Button
             href={props.item.url}
             target="_blank"
