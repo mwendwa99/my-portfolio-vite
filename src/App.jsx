@@ -3,7 +3,11 @@ import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 // mui
 import { Container, createTheme } from "@mui/material";
-import { LaptopTwoTone, AccountTreeTwoTone } from "@mui/icons-material";
+import {
+  LaptopTwoTone,
+  AccountTreeTwoTone,
+  ConnectWithoutContactTwoTone,
+} from "@mui/icons-material";
 // theme
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -32,6 +36,10 @@ function App() {
           icon={<AccountTreeTwoTone fontSize="medium" />}
         />
         <Projects />
+        <Divider
+          label="Contact"
+          icon={<ConnectWithoutContactTwoTone fontSize="medium" />}
+        />
       </Container>
     </ThemeProvider>
   );

@@ -11,14 +11,6 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 
-const CarouselSwitcher = styled.section`
-  @media screen and (max-width: 768px) {
-    .carousel: {
-      display: none;
-    }
-  }
-`;
-
 const getWindowSize = () => {
   const width = window.innerWidth;
   const height = window.innerHeight;
@@ -26,30 +18,26 @@ const getWindowSize = () => {
   return { height, width };
 };
 
-console.log("sdds", getWindowSize());
-
 export default function Example({ projects }) {
   return (
-    <CarouselSwitcher>
-      <Carousel duration={300} animation="slide" swipe fullHeightHover={false}>
-        {typeof projects !== "undefined" ? (
-          projects.map((item, i) => (
-            <Item key={i} item={item} projects={projects} />
-          ))
-        ) : (
-          <Paper
-            sx={{
-              height: 300,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <CircularProgress size={100} color="inherit" />
-          </Paper>
-        )}
-      </Carousel>
-    </CarouselSwitcher>
+    <Carousel duration={300} animation="slide" swipe fullHeightHover={false}>
+      {typeof projects !== "undefined" ? (
+        projects.map((item, i) => (
+          <Item key={i} item={item} projects={projects} />
+        ))
+      ) : (
+        <Paper
+          sx={{
+            height: 300,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CircularProgress size={100} color="inherit" />
+        </Paper>
+      )}
+    </Carousel>
   );
 }
 
