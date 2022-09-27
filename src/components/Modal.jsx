@@ -7,6 +7,9 @@ import Fab from "@mui/material/Fab";
 import { CircularProgress, Skeleton } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { DocumentScannerTwoTone } from "@mui/icons-material";
+import { useSelector, useDispatch } from "react-redux";
+import { getCv } from "../redux/slices/contentSlice";
+import { isEmpty } from "../utils/appMethods";
 // assets
 import axios from "axios";
 
@@ -34,44 +37,32 @@ const style = {
 };
 
 export default function TransitionsModal() {
+  const dispatch = useDispatch();
+  const cv = useSelector((state) => state.content.cv);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [data, setData] = useState({
-    title: (
-      <Skeleton
-        variant="text"
-        width={50}
-        animation="pulse"
-        sx={{ m: 0, p: 0 }}
-      />
-    ),
-    icon: (
-      <CircularProgress
-        size={20}
-        variant="indeterminate"
-        thickness={6}
-        sx={{ color: "primary.contrastText", mr: 1 }}
-      />
-    ),
-    attachments: null ? <CircularProgress /> : [],
-    version: <Skeleton />,
-  });
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState();
+
+  const isEmpty = (object) => {
+    for (var property in object) {
+      if (object.hasOwnProperty(property)) return false;
+    }
+    return true;
+  };
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.airtable.com/v0/appJjjwtxcQuzoQcH/documents/${documentsTable["resume"]}`,
-        config
-      )
-      .then((res) =>
-        setData({
-          ...res.data.fields,
-          icon: <DocumentScannerTwoTone fontSize="medium" sx={{ mr: 1 }} />,
-        })
-      )
-      .catch((error) => console.log(error));
+    const data = dispatch(getCv());
+    setData(() => cv);
+    data === "undefined" || isEmpty(data)
+      ? setLoading(true)
+      : setLoading(false);
   }, []);
+
+  console.log("data", data);
+  console.log("empty", isEmpty(data));
+  console.log("loading", loading);
 
   return (
     <div>
@@ -82,9 +73,31 @@ export default function TransitionsModal() {
         sx={{ m: 2, p: 2 }}
         onClick={handleOpen}
       >
-        {data.icon}
+        {loading ? (
+          <>
+            <CircularProgress
+              size={20}
+              variant="indeterminate"
+              thickness={6}
+              sx={{ color: "primary.contrastText", mr: 1 }}
+            />
+            <Skeleton
+              variant="text"
+              width={50}
+              animation="pulse"
+              sx={{ m: 0, p: 0 }}
+            />
+          </>
+        ) : (
+          <>
+            <DocumentScannerTwoTone fontSize="small" />
+            <Typography variant="button" sx={{ fontWeight: 700 }}>
+              my Resume
+            </Typography>
+          </>
+        )}
         <Typography variant="button" sx={{ fontWeight: 700 }}>
-          {data.title}
+          {/* {data.title} */}
         </Typography>
       </Fab>
       <Modal
@@ -101,11 +114,15 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <embed
-              src={data.attachments.map((item) => item.url)}
+            {/* <iframe
+              src={cv["cv"].url}
+              type="text/html"
               height="100%"
               width="100%"
-            />
+              title={cv["cv"].title}
+            >
+              sOME THES
+            </iframe> */}
           </Box>
         </Fade>
       </Modal>
