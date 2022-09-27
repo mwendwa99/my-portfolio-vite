@@ -4,6 +4,19 @@ import { teal, yellow, blue, cyan } from "@mui/material/colors";
 
 const initialState = {
   mode: {
+    components: {
+      MuiLink: {
+        styleOverrides: {
+          root: ({ ownerState }) => ({
+            ...(ownerState.variant === "body1" &&
+              ownerState.color === "primary" && {
+                textDecoration: "none",
+                // color: "#fff",
+              }),
+          }),
+        },
+      },
+    },
     typography: {
       fontFamily: "Courier Prime, monospace",
     },

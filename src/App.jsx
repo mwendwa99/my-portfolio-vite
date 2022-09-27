@@ -18,6 +18,7 @@ import Divider from "./components/Divider";
 import Landing from "./sections/Landing";
 import WhatIDo from "./sections/WhatIDo";
 import Projects from "./sections/Projects";
+import Contact from "./sections/Contact";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
           label="Contact"
           icon={<ConnectWithoutContactTwoTone fontSize="medium" />}
         />
+        <Contact />
       </Container>
     </ThemeProvider>
   );
