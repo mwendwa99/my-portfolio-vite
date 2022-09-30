@@ -12,5 +12,5 @@ const db = getFirestore(app);
 export const content = await getDocs(collection(db, "content"));
 export const about = await getDoc(doc(db, "content", "about"));
 export const whatido = await getDoc(doc(db, "content", "whatido"));
+export const resume = await getDoc(doc(db, "content", "resume"));
 export const projects = await getDocs(collection(db, "projects"));
-export const cv = await getDoc(doc(db, "assets", "documents"));

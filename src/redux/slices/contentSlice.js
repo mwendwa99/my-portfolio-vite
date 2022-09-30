@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { about, whatido, cv } from "../../utils/firebaseMethods";
+import { about, whatido, resume } from "../../utils/firebaseMethods";
 
 const initialState = {
   about: {},
@@ -18,7 +18,7 @@ export const contentSlice = createSlice({
       state.whatido = whatido.data();
     },
     getCv: (state) => {
-      state.cv = cv.data();
+      state.cv = resume.data();
     },
     updateAbout: (state) => {},
     updateWhatIDo: (state) => {},
