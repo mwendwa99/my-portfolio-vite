@@ -4,8 +4,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Divider } from "@mui/material";
+import { userSignIn, userSignOut } from "../redux/slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function BasicMenu() {
+  const dispatch = useDispatch();
+  const userState = useSelector((state) => state.authState.user);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -13,6 +17,16 @@ export default function BasicMenu() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleSignIn = () => {
+    dispatch(userSignIn());
+    handleClose();
+  };
+
+  const handleSignOut = () => {
+    dispatch(userSignOut());
+    handleClose();
   };
 
   const scrollTo = (e) => {
@@ -33,7 +47,7 @@ export default function BasicMenu() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <MenuIcon />
+        <MenuIcon color="action" />
       </IconButton>
       <Menu
         id="basic-menu"
@@ -55,7 +69,7 @@ export default function BasicMenu() {
         </MenuItem>
         <Divider />
         <MenuItem id="#" onClick={(e) => scrollTo(e)}>
-          Login
+          {userState.isSignedIn ? "Logout" : "login"}
         </MenuItem>
       </Menu>
     </div>
