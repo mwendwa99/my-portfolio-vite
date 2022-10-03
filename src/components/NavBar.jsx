@@ -8,21 +8,14 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { LightModeTwoTone, DarkModeTwoTone } from "@mui/icons-material";
 import { light, dark } from "../redux/slices/themeSlice";
+import BasicMenu from "./BasicMenu";
 
 export default function ButtonAppBar({ theme, changeTheme }) {
   return (
     <Box id="nav-bar" sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <BasicMenu />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Brian Mwendwa
           </Typography>

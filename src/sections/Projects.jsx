@@ -15,7 +15,7 @@ export default function () {
   }, []);
 
   return (
-    <Container maxWidth="md">
+    <Container id="projects" maxWidth="md">
       <Grid container spacing={3}>
         <Grid item xs={12}></Grid>
         <Grid item xs={12}>

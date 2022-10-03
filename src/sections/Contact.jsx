@@ -17,7 +17,7 @@ const useStyle = makeStyles({
 
 export default function Contact() {
   return (
-    <Box id="footer">
+    <Box id="contact">
       <Grid container style={{ display: "flex", justifyContent: "center" }}>
         <Grid item xs={12} sm={5} sx={{ pt: 1 }}>
           <Stack

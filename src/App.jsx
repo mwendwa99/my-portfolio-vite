@@ -30,7 +30,11 @@ function App() {
       <Navbar theme={theme} changeTheme={dispatch} />
       <Container maxWidth="md" sx={{ mt: 10 }}>
         <Landing />
-        <Divider label="What I Do" icon={<LaptopTwoTone fontSize="medium" />} />
+        <Divider
+          id="whatido"
+          label="What I Do"
+          icon={<LaptopTwoTone fontSize="medium" />}
+        />
         <WhatIDo />
         <Divider
           label="Projects"

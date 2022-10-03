@@ -19,7 +19,7 @@ export default function WhatIDo() {
     }
   };
   return (
-    <Container maxWidth="md">
+    <Container id="whatido" maxWidth="md">
       <Box my={4} py={2}>
         <Grid
           container
