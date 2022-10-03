@@ -3,22 +3,22 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Divider } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import { userSignIn, userSignOut } from "../redux/slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function BasicMenu() {
   const dispatch = useDispatch();
-  const userState = useSelector((state) => state.authState.user);
+  const userState = useSelector((state) => state.authState);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  console.log(userState.isSignedIn);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const handleSignIn = () => {
     dispatch(userSignIn());
     handleClose();
@@ -68,8 +68,12 @@ export default function BasicMenu() {
           Contact
         </MenuItem>
         <Divider />
-        <MenuItem id="#" onClick={(e) => scrollTo(e)}>
-          {userState.isSignedIn ? "Logout" : "login"}
+        <MenuItem id="#">
+          {userState.isSignedIn ? (
+            <div onClick={handleSignOut}>Log Out</div>
+          ) : (
+            <div onClick={handleSignIn}>Log In</div>
+          )}
         </MenuItem>
       </Menu>
     </div>
