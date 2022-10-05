@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { teal, yellow } from "@mui/material/colors";
+import { teal, yellow, lightGreen } from "@mui/material/colors";
 
 const initialState = {
   mode: {
@@ -39,6 +39,17 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     light: (state) => initialState,
+    admin: (state) => {
+      state.mode = {
+        palette: {
+          mode: "dark",
+          text: {
+            primary: lightGreen[500],
+            secondary: lightGreen[400],
+          },
+        },
+      };
+    },
     dark: (state) => {
       state.mode = {
         typography: {
@@ -74,6 +85,6 @@ const themeSlice = createSlice({
   },
 });
 
-export const { light, dark } = themeSlice.actions;
+export const { light, dark, admin } = themeSlice.actions;
 
 export default themeSlice.reducer;

@@ -1,6 +1,8 @@
-import { useReducer } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
+import { admin } from "./redux/slices/themeSlice";
+import { useAuth0 } from "@auth0/auth0-react";
 // mui
 import { Container, createTheme } from "@mui/material";
 import {
@@ -21,13 +23,22 @@ import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 
 function App() {
+  const { isAuthenticated } = useAuth0();
   const dispatch = useDispatch();
   const theme = createTheme(useSelector((state) => state.theme.mode));
+  // check if user is logged in then change theme
+  useEffect(() => {
+    isAuthenticated ? dispatch(admin()) : null;
+  }, [isAuthenticated, dispatch]);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar theme={theme} changeTheme={dispatch} />
+      <Navbar
+        isAuthenticated={isAuthenticated}
+        theme={theme}
+        changeTheme={dispatch}
+      />
       <Container maxWidth="md" sx={{ mt: 10 }}>
         <Landing />
         <Divider
