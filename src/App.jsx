@@ -40,23 +40,27 @@ function App() {
         changeTheme={dispatch}
       />
       <Container maxWidth="md" sx={{ mt: 10 }}>
-        <Landing />
-        <Divider
-          id="whatido"
-          label="What I Do"
-          icon={<LaptopTwoTone fontSize="medium" />}
-        />
-        <WhatIDo />
+        <div style={{ border: isAuthenticated && "1px dashed white" }}>
+          <Landing />
+        </div>
+        <Divider label="What I Do" icon={<LaptopTwoTone fontSize="medium" />} />
+        <div style={{ border: isAuthenticated && "1px dashed blue" }}>
+          <WhatIDo />
+        </div>
         <Divider
           label="Projects"
           icon={<AccountTreeTwoTone fontSize="medium" />}
         />
-        <Projects />
+        <div style={{ border: isAuthenticated && "1px dashed yellow" }}>
+          <Projects />
+        </div>
         <Divider
           label="Contact"
           icon={<ConnectWithoutContactTwoTone fontSize="medium" />}
         />
-        <Contact />
+        <div style={{ border: isAuthenticated && "1px dashed purple" }}>
+          <Contact />
+        </div>
       </Container>
     </ThemeProvider>
   );
