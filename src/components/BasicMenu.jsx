@@ -3,16 +3,14 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Box, Divider } from "@mui/material";
-import { userSignIn, userSignOut } from "../redux/slices/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { Divider } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function BasicMenu() {
-  const dispatch = useDispatch();
-  const userState = useSelector((state) => state.authState);
+  const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
+    useAuth0();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  console.log(userState.isSignedIn);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -20,12 +18,12 @@ export default function BasicMenu() {
     setAnchorEl(null);
   };
   const handleSignIn = () => {
-    dispatch(userSignIn());
+    loginWithRedirect();
     handleClose();
   };
 
   const handleSignOut = () => {
-    dispatch(userSignOut());
+    logout({ returnTo: window.location.origin });
     handleClose();
   };
 
@@ -69,8 +67,24 @@ export default function BasicMenu() {
         </MenuItem>
         <Divider />
         <MenuItem id="#">
-          {userState.isSignedIn ? (
-            <div onClick={handleSignOut}>Log Out</div>
+          {isAuthenticated ? (
+            <div
+              style={{
+                display: "grid",
+                placeItems: "center",
+                gridAutoFlow: "column",
+              }}
+              onClick={handleSignOut}
+            >
+              <img
+                height={30}
+                width={30}
+                style={{ borderRadius: 15 }}
+                src={user.picture}
+                alt={user.name}
+              />
+              &nbsp;Log Out
+            </div>
           ) : (
             <div onClick={handleSignIn}>Log In</div>
           )}
