@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import "./App.css";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { admin } from "./redux/slices/themeSlice";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -14,13 +14,9 @@ import {
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 // components
-import Navbar from "./components/NavBar";
-import Divider from "./components/Divider";
+import { NavBar, Divider } from "./components";
 // sections
-import Landing from "./sections/Landing";
-import WhatIDo from "./sections/WhatIDo";
-import Projects from "./sections/Projects";
-import Contact from "./sections/Contact";
+import { Landing, WhatIDo, Projects, Contact } from "./sections";
 
 function App() {
   const { isAuthenticated } = useAuth0();
@@ -34,7 +30,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar
+      <NavBar
         isAuthenticated={isAuthenticated}
         theme={theme}
         changeTheme={dispatch}

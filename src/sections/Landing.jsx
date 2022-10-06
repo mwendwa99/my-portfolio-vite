@@ -5,7 +5,7 @@ import { getAbout } from "../redux/slices/contentSlice";
 import Lottie from "lottie-react";
 import "react-loading-skeleton/dist/skeleton.css";
 // components
-import Modal from "../components/Modal";
+import { Modal } from "../components";
 // assets
 import codework from "../assets/lottie/codework.json";
 
