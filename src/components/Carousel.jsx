@@ -7,20 +7,11 @@ import {
   CircularProgress,
   Grid,
   Box,
-  Divider,
 } from "@mui/material";
-import styled from "styled-components";
 
-const getWindowSize = () => {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-
-  return { height, width };
-};
-
-export default function Example({ projects }) {
+export default function Carousel({ projects }) {
   return (
-    <Carousel duration={300} animation="slide" swipe fullHeightHover={false}>
+    <Carousel interval={5000} animation="slide" swipe>
       {typeof projects !== "undefined" ? (
         projects.map((item, i) => (
           <Item key={i} item={item} projects={projects} />
@@ -28,7 +19,7 @@ export default function Example({ projects }) {
       ) : (
         <Paper
           sx={{
-            height: 300,
+            height: 500,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
