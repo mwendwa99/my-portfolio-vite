@@ -9,7 +9,7 @@ import {
   Box,
 } from "@mui/material";
 
-export default function Carousel({ projects }) {
+export default function MyCarousel({ projects }) {
   return (
     <Carousel interval={5000} animation="slide" swipe>
       {typeof projects !== "undefined" ? (
