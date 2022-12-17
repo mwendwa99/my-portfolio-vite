@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { Container, Grid } from "@mui/material";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { getProjects } from "../redux/slices/projectSlice";
 // components
-import Carousel from "../components/Carousel";
+// import Carousel from "../components/Carousel";
+const Carousel = React.lazy(() => import("../components/Carousel"));
 
 export default function () {
   const dispatch = useDispatch();
@@ -19,7 +20,9 @@ export default function () {
       <Grid container spacing={3}>
         <Grid item xs={12}></Grid>
         <Grid item xs={12}>
-          <Carousel projects={Object.values(projects)} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Carousel projects={Object.values(projects)} />
+          </Suspense>
         </Grid>
       </Grid>
     </Container>

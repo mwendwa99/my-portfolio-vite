@@ -1,9 +1,12 @@
+import React from "react";
 import { Divider, Chip } from "@mui/material";
 
-export default function DividerComponent({ label, icon }) {
+const DividerComponent = React.memo(({ label, icon }) => {
   return (
     <Divider>
       <Chip label={label} icon={icon} />
     </Divider>
   );
-}
+});
+
+export default DividerComponent;

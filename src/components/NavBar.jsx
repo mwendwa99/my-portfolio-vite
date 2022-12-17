@@ -10,7 +10,7 @@ import { LightModeTwoTone, DarkModeTwoTone } from "@mui/icons-material";
 import { light, dark } from "../redux/slices/themeSlice";
 import BasicMenu from "./BasicMenu";
 
-export default function ButtonAppBar({ theme, changeTheme }) {
+const ButtonAppBar = React.memo(({ theme, changeTheme }) => {
   return (
     <Box id="nav-bar" sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -40,4 +40,6 @@ export default function ButtonAppBar({ theme, changeTheme }) {
       </AppBar>
     </Box>
   );
-}
+});
+
+export default ButtonAppBar;

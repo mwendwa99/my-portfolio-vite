@@ -1,11 +1,18 @@
-import React, { useEffect } from "react";
-import { Box, Container, Grid, Skeleton, Typography } from "@mui/material";
+import React, { useEffect, Suspense } from "react";
+import {
+  Box,
+  Container,
+  Grid,
+  Skeleton,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { getAbout } from "../redux/slices/contentSlice";
 import Lottie from "lottie-react";
 import "react-loading-skeleton/dist/skeleton.css";
 // components
-import { Modal } from "../components";
+const Modal = React.lazy(() => import("../components/Modal"));
 // assets
 import codework from "../assets/lottie/codework.json";
 
@@ -44,22 +51,26 @@ export default function Landing() {
               textAlign: "center",
             }}
           >
-            <Typography
-              variant="h5"
-              gutterBottom
-              align="center"
-              sx={{ fontWeight: 700 }}
-              component="h1"
-            >
-              {about.title || (
+            <Suspense
+              fallback={
                 <Skeleton
                   variant="text"
                   width={300}
                   animation="pulse"
                   sx={{ m: 0, p: 0 }}
                 />
-              )}
-            </Typography>
+              }
+            >
+              <Typography
+                variant="h5"
+                gutterBottom
+                align="center"
+                sx={{ fontWeight: 700 }}
+                component="h1"
+              >
+                {about.title}
+              </Typography>
+            </Suspense>
             <Typography
               variant="subtitle1"
               gutterBottom
@@ -92,7 +103,9 @@ export default function Landing() {
                 />
               )}
             </Typography>
-            <Modal />
+            <Suspense fallback={<CircularProgress color="primary" size="md" />}>
+              <Modal />
+            </Suspense>
           </Grid>
         </Grid>
       </Box>

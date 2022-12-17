@@ -9,7 +9,7 @@ import {
   Box,
 } from "@mui/material";
 
-export default function MyCarousel({ projects }) {
+const MyCarousel = React.memo(({ projects }) => {
   return (
     <Carousel interval={5000} animation="slide" swipe>
       {typeof projects !== "undefined" ? (
@@ -30,7 +30,9 @@ export default function MyCarousel({ projects }) {
       )}
     </Carousel>
   );
-}
+});
+
+export default MyCarousel;
 
 function Item(props) {
   return (
