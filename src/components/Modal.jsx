@@ -60,9 +60,7 @@ export default function TransitionsModal() {
         <Fade in={open}>
           <Box sx={style}>
             <embed
-              // src={data.url}
-              src={`https://firebasestorage.googleapis.com/v0/b/portfolio-347811.appspot.com/o/pdf%2FSE%20Resume.pdf?alt=media&token=353ff2d2-160f-47da-9145-1457d7d191b5&_gl=1*kd5374*_ga*MjIwMjI1MDQzLjE2ODU1MjU1Mzk.*_ga_CW55HF8NVT*MTY4NTUyNTUzOS4xLjEuMTY4NTUyNTcxOC4wLjAuMA..`}
-              // src={`${data.url}#toolbar=0`}
+              src={`${data.url}#toolbar=0`}
               type="text/html"
               height="100%"
               width="100%"
