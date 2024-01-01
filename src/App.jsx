@@ -35,7 +35,7 @@ function App() {
       <CssBaseline />
       <Helmet>
         {/* Common SEO meta tags */}
-        <title>Your Portfolio Title</title>
+        <title>Brian MWendwa</title>
         <meta
           name="description"
           content="Software Developer with 3 years of experience in web technologies."
@@ -44,10 +44,10 @@ function App() {
         <meta name="keywords" content="Web Developer, Portfolio, React" />
 
         {/* Open Graph meta tags for social media sharing */}
-        <meta property="og:title" content="Your Portfolio Title" />
+        <meta property="og:title" content="Brian MWendwa" />
         <meta
           property="og:description"
-          content="Software Engineer |React|TypeScript|JavaScript|Python|SQL|Express|Django|Firebase|MongoDb"
+          content="Software Engineer React|TypeScript|JavaScript|Python|SQL|Express|Django|Firebase|MongoDb"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://mwendwa.netlify.app" />
@@ -63,7 +63,7 @@ function App() {
         <meta name="twitter:title" content="Brian Mwendwa" />
         <meta
           name="twitter:description"
-          content="Software Engineer |React|TypeScript|JavaScript|Python|SQL|Express|Django|Firebase|MongoDb"
+          content="Software Engineer React|TypeScript|JavaScript|Python|SQL|Express|Django|Firebase|MongoDb"
         />
         <meta
           name="twitter:image"
