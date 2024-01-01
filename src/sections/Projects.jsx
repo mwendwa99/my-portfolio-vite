@@ -4,7 +4,6 @@ import { Container, Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { getProjects } from "../redux/slices/projectSlice";
 // components
-// import Carousel from "../components/Carousel";
 const Carousel = React.lazy(() => import("../components/Carousel"));
 
 export default function () {

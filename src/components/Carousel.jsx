@@ -36,16 +36,25 @@ export default MyCarousel;
 
 function Item(props) {
   return (
-    <Paper sx={{ height: "100%", p: 2 }}>
-      <Grid container spacing={1} sx={{ pr: 2, pl: 2 }}>
+    <Paper sx={{ height: { xs: 700, sm: 400 }, p: 2 }}>
+      <Grid
+        container
+        spacing={1}
+        sx={{
+          display: "flex",
+          height: "100%",
+          justifyContent: "space-between",
+        }}
+      >
         <Grid
           item
           xs={12}
           sm={6}
           md={6}
-          style={{
+          sx={{
             display: "flex",
-            justifyContent: "center",
+            flexDirection: "column",
+            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
@@ -53,20 +62,33 @@ function Item(props) {
             style={{
               borderRadius: 5,
               boxShadow: `0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)`,
+              cursor: "pointer",
             }}
-            height={250}
-            width={300}
+            height={"100%"}
+            width={"100%"}
             src={props.item.image}
             alt={props.item.title}
+            onClick={() => window.open(props.item.url, "_blank")}
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={6}>
+
+        <Grid
+          item
+          xs={12}
+          sm={6}
+          md={6}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            alignItems: "stretch",
+          }}
+        >
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "flex-start",
-              position: "relative",
             }}
           >
             <Typography variant="h6">{props.item.title}</Typography>
@@ -78,9 +100,8 @@ function Item(props) {
           >
             Stack: {props.item.stack}
           </Typography>
-          <br />
           <Button
-            style={{ alignSelf: "center" }}
+            sx={{ marginTop: 2, backgroundColor: "#f50057" }}
             href={props.item.url}
             target="_blank"
             variant="contained"
