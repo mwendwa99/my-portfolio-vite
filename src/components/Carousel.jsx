@@ -39,7 +39,7 @@ function Item(props) {
     <Paper sx={{ height: { xs: 700, sm: 400 }, p: 2 }}>
       <Grid
         container
-        spacing={1}
+        spacing={3}
         sx={{
           display: "flex",
           height: "100%",

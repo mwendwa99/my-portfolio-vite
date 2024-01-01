@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { teal, yellow, lightGreen } from "@mui/material/colors";
+import { teal, grey } from "@mui/material/colors";
 
 const initialState = {
   mode: {
@@ -10,25 +10,25 @@ const initialState = {
       // palette values for dark mode
       mode: "light",
       primary: {
-        main: teal[200],
-        contrastText: teal[900],
+        main: teal[50],
+        contrastText: grey[900],
       },
       secondary: {
-        main: teal[200],
-        contrastText: teal[900],
+        main: teal[50],
+        contrastText: grey[900],
       },
       background: {
-        default: teal[100],
-        paper: teal[200],
+        default: teal[50],
+        paper: teal[50],
       },
       button: {
-        main: teal[200],
-        contrastText: teal[900],
+        main: teal[50],
+        contrastText: grey[900],
       },
-      divider: teal[900],
+      divider: grey[900],
       text: {
-        primary: teal[900],
-        secondary: teal[500],
+        primary: grey[900],
+        secondary: teal[200],
       },
     },
   },
@@ -44,8 +44,8 @@ const themeSlice = createSlice({
         palette: {
           mode: "dark",
           text: {
-            primary: lightGreen[500],
-            secondary: lightGreen[400],
+            primary: teal[200],
+            secondary: teal[50],
           },
         },
       };
@@ -55,29 +55,28 @@ const themeSlice = createSlice({
         typography: {
           fontFamily: "Courier Prime, monospace",
         },
-        // palette values for dark mode
         palette: {
           mode: "dark",
           primary: {
-            main: teal[900],
-            contrastText: teal[100],
+            main: grey[900],
+            contrastText: teal[50],
           },
           secondary: {
-            main: teal[900],
-            contrastText: teal[100],
+            main: grey[900],
+            contrastText: teal[50],
           },
           background: {
-            default: teal[800],
-            paper: teal[900],
+            default: grey[800],
+            paper: grey[900],
           },
           button: {
-            main: teal[800],
-            contrastText: yellow[500],
+            main: grey[800],
+            contrastText: teal[100],
           },
-          divider: teal[200],
+          divider: teal[50],
           text: {
-            primary: yellow[500],
-            secondary: yellow[400],
+            primary: grey["A100"],
+            secondary: grey["A200"],
           },
         },
       };
