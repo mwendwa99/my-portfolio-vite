@@ -65,8 +65,8 @@ export default function BasicMenu() {
         <MenuItem id="contact" onClick={(e) => scrollTo(e)}>
           Contact
         </MenuItem>
-        <Divider />
-        <MenuItem id="#">
+        {/* <Divider /> */}
+        {/* <MenuItem id="#">
           {isAuthenticated ? (
             <div
               style={{
@@ -88,7 +88,7 @@ export default function BasicMenu() {
           ) : (
             <div onClick={handleSignIn}>Log In</div>
           )}
-        </MenuItem>
+        </MenuItem> */}
       </Menu>
     </div>
   );
