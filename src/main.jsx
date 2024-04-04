@@ -3,21 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
-import { Auth0Provider } from "@auth0/auth0-react";
-
-const domain = import.meta.env.VITE_APP_AUTH0_DOMAIN;
-const clientId = import.meta.env.VITE_APP_AUTH0_CLIENTID;
+import { persistor, store } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
-  <Auth0Provider
-    domain={domain}
-    clientId={clientId}
-    redirectUri={window.location.origin}
-  >
-    <Provider store={store}>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
       <App />
-    </Provider>
-  </Auth0Provider>,
+    </PersistGate>
+  </Provider>,
   document.getElementById("root")
 );

@@ -14,9 +14,19 @@ const ButtonAppBar = React.memo(({ theme, changeTheme }) => {
       <AppBar position="fixed">
         <Toolbar>
           <BasicMenu />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Brian Mwendwa
-          </Typography>
+          <Box
+            component="div"
+            className="d-flex flex-row align-items-center me-auto"
+          >
+            <Typography variant="h6">Brian Mwendwa</Typography>
+            <img
+              src="plant.svg"
+              alt="plant"
+              height={50}
+              width={25}
+              className="ms-2"
+            />
+          </Box>
           <IconButton
             size="large"
             edge="start"

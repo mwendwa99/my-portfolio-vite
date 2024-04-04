@@ -4,11 +4,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Divider } from "@mui/material";
-import { useAuth0 } from "@auth0/auth0-react";
 
 export default function BasicMenu() {
-  const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
-    useAuth0();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -16,15 +13,6 @@ export default function BasicMenu() {
   };
   const handleClose = () => {
     setAnchorEl(null);
-  };
-  const handleSignIn = () => {
-    loginWithRedirect();
-    handleClose();
-  };
-
-  const handleSignOut = () => {
-    logout({ returnTo: window.location.origin });
-    handleClose();
   };
 
   const scrollTo = (e) => {
@@ -65,30 +53,6 @@ export default function BasicMenu() {
         <MenuItem id="contact" onClick={(e) => scrollTo(e)}>
           Contact
         </MenuItem>
-        {/* <Divider /> */}
-        {/* <MenuItem id="#">
-          {isAuthenticated ? (
-            <div
-              style={{
-                display: "grid",
-                placeItems: "center",
-                gridAutoFlow: "column",
-              }}
-              onClick={handleSignOut}
-            >
-              <img
-                height={30}
-                width={30}
-                style={{ borderRadius: 15 }}
-                src={user.picture}
-                alt={user.name}
-              />
-              &nbsp;Log Out
-            </div>
-          ) : (
-            <div onClick={handleSignIn}>Log In</div>
-          )}
-        </MenuItem> */}
       </Menu>
     </div>
   );

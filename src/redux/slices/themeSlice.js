@@ -39,17 +39,6 @@ const themeSlice = createSlice({
   initialState,
   reducers: {
     light: (state) => initialState,
-    admin: (state) => {
-      state.mode = {
-        palette: {
-          mode: "dark",
-          text: {
-            primary: teal[200],
-            secondary: teal[50],
-          },
-        },
-      };
-    },
     dark: (state) => {
       state.mode = {
         typography: {
@@ -84,6 +73,6 @@ const themeSlice = createSlice({
   },
 });
 
-export const { light, dark, admin } = themeSlice.actions;
+export const { light, dark } = themeSlice.actions;
 
 export default themeSlice.reducer;
