@@ -2,9 +2,56 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="/plant.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brian Mwendwa</title>
+    <meta
+      name="description"
+      content="Software Developer with 4 years of experience in web technologies."
+    />
+    <meta name="author" content="Brian Mwendwa" />
+    <meta
+      name="keywords"
+      content="Web Developer, Portfolio, React, Frontend, Software, Engineer"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Brian Mwendwa" />
+    <meta
+      property="og:description"
+      content="Software Engineer React|TypeScript|JavaScript|Python|SQL|Express|Django|Firebase|MongoDb"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mwendwa.netlify.app" />
+    <meta property="og:image" content="./public/plant.svg" />
+    <meta property="og:site_name" content="Brian Mwendwa Portfolio" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mwendwa_atl" />
+    <meta name="twitter:title" content="Brian Mwendwa" />
+    <meta
+      name="twitter:description"
+      content="Software Engineer React|JavaScript|SQL|MongoDb"
+    />
+    <meta
+      name="twitter:image"
+      content="https://media.licdn.com/dms/image/D4D03AQE_X1kfBgk8Kg/profile-displayphoto-shrink_400_400/0/1692985343329?e=1709769600&v=beta&t=BqCirXJefw0ViJ6zRQVYsXwptF7HfevQztTe_wiuPYY"
+    />
+
+    <!-- SEO: Meta Color Theme -->
+    <meta name="theme-color" content="#e0f2f1" />
+    <!-- Light theme -->
+    <meta name="msapplication-TileColor" content="#e0f2f1" />
+    <!-- Light theme -->
+
+    <!-- Dark theme meta color -->
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#00776C"
+    />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -12,22 +59,20 @@
       crossorigin="anonymous"
     />
   </head>
-  <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-HBCSWN3QEV"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-
-    gtag("config", "G-HBCSWN3QEV");
-  </script>
   <body>
     <div id="root"></div>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-HBCSWN3QEV"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-HBCSWN3QEV");
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

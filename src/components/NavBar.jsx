@@ -16,15 +16,17 @@ const ButtonAppBar = React.memo(({ theme, changeTheme }) => {
           <BasicMenu />
           <Box
             component="div"
-            className="d-flex flex-row align-items-center me-auto"
+            className="d-flex flex-row align-items-center me-auto p-0"
           >
-            <Typography variant="h6">Brian Mwendwa</Typography>
+            <Typography variant="h6" className="m-0 p-0">
+              Brian Mwendwa
+            </Typography>
             <img
               src="plant.svg"
               alt="plant"
-              height={50}
-              width={25}
-              className="ms-2"
+              height={20}
+              width={20}
+              className="ms-2 align-self-center"
             />
           </Box>
           <IconButton

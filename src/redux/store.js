@@ -10,20 +10,22 @@ const persistConfig = {
   storage,
 };
 
-const combinedReducer = combineReducers({
+const rootReducer = combineReducers({
   projects: projectReducer,
   content: contentReducer,
   theme: themeReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, combinedReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const middleware = (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: false,
+  });
 
 export const store = configureStore({
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
   reducer: persistedReducer,
+  middleware,
   devTools: process.env.NODE_ENV === "development",
 });
 

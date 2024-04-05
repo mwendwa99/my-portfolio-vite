@@ -1,23 +1,52 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { projects } from "../../utils/firebaseMethods";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import client from "../../../client";
 
 const initialState = {
-  data: {},
+  loading: false,
+  error: null,
+  data: null,
 };
 
+export const getProjects = createAsyncThunk(
+  "projects/getProjects",
+  (_, { rejectWithValue }) => {
+    try {
+      const query = `*[_type == "projects"] | order(_createdAt desc){
+        _id,
+        title,
+        description,
+        summary,
+        link,
+        stack,
+       images,
+       year
+      }`;
+      const data = client.fetch(query);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const projectSlice = createSlice({
-  name: "all",
+  name: "projects",
   initialState,
-  reducers: {
-    getProjects: (state) => {
-      const obj = {};
-      projects.forEach((doc) => {
-        obj[doc.id] = doc.data();
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getProjects.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getProjects.fulfilled, (state, action) => {
+        state.data = action.payload;
+        state.loading = false;
+      })
+      .addCase(getProjects.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading = false;
       });
-      state.data = obj;
-    },
   },
 });
 
-export const { getProjects } = projectSlice.actions;
 export default projectSlice.reducer;

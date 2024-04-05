@@ -47,24 +47,24 @@ const themeSlice = createSlice({
         palette: {
           mode: "dark",
           primary: {
-            main: grey[900],
-            contrastText: teal[50],
+            main: "#00776C",
+            contrastText: "#fafafa",
           },
           secondary: {
-            main: grey[900],
-            contrastText: teal[50],
+            main: "#00776C",
+            contrastText: "#fafafa",
           },
           background: {
-            default: grey[800],
-            paper: grey[900],
+            default: "#00776C",
+            paper: "#00776C",
           },
           button: {
-            main: grey[800],
-            contrastText: teal[100],
+            main: teal[50],
+            contrastText: "#fafafa",
           },
-          divider: teal[50],
+          divider: "#fafafa",
           text: {
-            primary: grey["A100"],
+            primary: "#FAFAFA",
             secondary: grey["A200"],
           },
         },
