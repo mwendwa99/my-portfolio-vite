@@ -75,7 +75,7 @@ export default function Landing() {
               variant="subtitle1"
               gutterBottom
               align="center"
-              sx={{ fontWeight: 700 }}
+              sx={{ fontWeight: 700, fontSize: 12 }}
               component="p"
             >
               {about.subtitle || (

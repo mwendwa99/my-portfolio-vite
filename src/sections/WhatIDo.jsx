@@ -32,7 +32,7 @@ export default function WhatIDo() {
         >
           {isEmpty(whatido) === false ? (
             whatido.data.map((item, index) => (
-              <Grid key={index} item xs={12} sm={4} md={4}>
+              <Grid key={index} item xs={6} sm={4} md={4}>
                 <Typography
                   variant="h6"
                   gutterBottom
