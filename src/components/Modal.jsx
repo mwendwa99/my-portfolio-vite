@@ -60,7 +60,7 @@ export default function TransitionsModal() {
         <Fade in={open}>
           <Box sx={style}>
             <embed
-              src={`${data.url}#toolbar=0`}
+              src={`${data.url}`}
               type="text/html"
               height="100%"
               width="100%"

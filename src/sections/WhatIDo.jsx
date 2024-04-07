@@ -33,6 +33,7 @@ export default function WhatIDo() {
           {isEmpty(whatido) === false ? (
             whatido.data.map((item, index) => (
               <Grid key={index} item xs={6} sm={4} md={4}>
+                <img src={item.image} height={100} width="100%" alt="skills" />
                 <Typography
                   variant="h6"
                   gutterBottom
@@ -41,12 +42,6 @@ export default function WhatIDo() {
                   component="h1"
                 >
                   {item.title}
-                  <img
-                    src={item.image}
-                    height={300}
-                    width="100%"
-                    alt="skills"
-                  />
                 </Typography>
                 <Typography
                   variant="body1"

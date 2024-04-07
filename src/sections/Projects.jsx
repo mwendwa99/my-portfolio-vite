@@ -23,12 +23,7 @@ export default function Projects({ theme }) {
           {projects &&
             projects.map((project, index) => (
               <Grid item xs={12} sm={6} key={index}>
-                <Card
-                  theme={theme}
-                  image={project.images[0]}
-                  title={project.title}
-                  description={project.description}
-                />
+                <Card theme={theme} project={project} />
               </Grid>
             ))}
         </Suspense>
